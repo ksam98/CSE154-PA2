@@ -18,6 +18,7 @@ def softmax(x):
   """
   Write the code for softmax activation function that takes in a numpy array and returns a numpy array.
   """
+  output = np.exp(x) / np.sum(np.exp(x))
   return output
 
 
@@ -81,7 +82,7 @@ class Activation:
     """
     self.x = x
 
-    output = 1/(1 + math.exp(-1 * x))
+    output = 1/(1 + np.exp(-1 * x))
     return output
 
   def tanh(self, x):
@@ -89,6 +90,8 @@ class Activation:
     Write the code for tanh activation function that takes in a numpy array and returns a numpy array.
     """
     self.x = x
+
+    output = (np.exp(x) - np.exp(-1*x))/(np.exp(x) + np.exp(-1*x)) ## TODO: this might have to be changed in the future
     return output
 
   def ReLU(self, x):
@@ -96,7 +99,7 @@ class Activation:
     Write the code for ReLU activation function that takes in a numpy array and returns a numpy array.
     """
     self.x = x
-    
+
     output = np.where(x > 0, 1.0, 0.0)
     return output
 
